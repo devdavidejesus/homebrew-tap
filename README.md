@@ -4,8 +4,9 @@ Homebrew formulae by [Davi de Jesus](https://github.com/devdavidejesus).
 
 ## btc-toolkit
 
-A zero-dependency Bitcoin CLI: decode OP_RETURN messages and inspect
-transactions, addresses, UTXOs, fees and blocks.
+A zero-dependency Bitcoin CLI: read OP_RETURN messages and inscriptions,
+decode raw transactions, verify a transaction against its block's proof of
+work, validate addresses offline, and inspect UTXOs, fees and blocks.
 Source: [devdavidejesus/btc-toolkit](https://github.com/devdavidejesus/btc-toolkit).
 
 ```bash

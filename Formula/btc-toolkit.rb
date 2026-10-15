@@ -1,22 +1,22 @@
 class BtcToolkit < Formula
   include Language::Python::Virtualenv
 
-  desc "Bitcoin CLI: decode OP_RETURN, inspect transactions, addresses, fees, blocks"
+  desc "Bitcoin CLI: read OP_RETURN, decode and verify transactions, validate addresses"
   homepage "https://github.com/devdavidejesus/btc-toolkit"
-  url "https://files.pythonhosted.org/packages/4c/56/a6e53e9daff8e0009a4f053b37607095205aea2b7d45e53accdea7da0b77/btc_toolkit-1.7.2.tar.gz"
-  sha256 "7e4069dd8725d09ccb625c654ed019179c811c3f81035645e2d20c7eccd41fe5"
+  url "https://files.pythonhosted.org/packages/61/de/573397eea7f3ca794b240c70452c50fc35827a8cffdf0280ea29ad68cf03/btc_toolkit-1.8.0.tar.gz"
+  sha256 "815a530f8bce34b764ab415500536c8b3ea651e2cdb15c709147162e0de3023e"
   license "MIT"
 
   depends_on "python@3.13"
 
   resource "bash-completion" do
-    url "https://raw.githubusercontent.com/devdavidejesus/btc-toolkit/v1.7.2/completions/btc-toolkit.bash"
-    sha256 "5752d09b7ea6d4b28cb59f9a9cfb594f7003f4db77da4436827ae61cf2db0b79"
+    url "https://raw.githubusercontent.com/devdavidejesus/btc-toolkit/v1.8.0/completions/btc-toolkit.bash"
+    sha256 "c705579e381a54498bfdc13f3cae9175cf36c6a8a9ea9016da446782c5adddb2"
   end
 
   resource "zsh-completion" do
-    url "https://raw.githubusercontent.com/devdavidejesus/btc-toolkit/v1.7.2/completions/btc-toolkit.zsh"
-    sha256 "159b294452aada67a1107ecf69484c466168d215fcfd383bf5bad3725dc8ab36"
+    url "https://raw.githubusercontent.com/devdavidejesus/btc-toolkit/v1.8.0/completions/btc-toolkit.zsh"
+    sha256 "57b69566db0479fffab94948ef81a08f9ab506c3101d48cc64a3a1dfacad20dd"
   end
 
   def install
@@ -28,5 +28,9 @@ class BtcToolkit < Formula
   test do
     assert_match "btc-toolkit #{version}", shell_output("#{bin}/btc-toolkit --version")
     assert_match "invalid", shell_output("#{bin}/btc-toolkit opreturn nothex 2>&1", 2).downcase
+    # Offline address validation: checksum verified, nothing sent over the network.
+    assert_match '"address_type": "P2WPKH"',
+                 shell_output("#{bin}/btc-toolkit validate bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq --json")
+    shell_output("#{bin}/btc-toolkit validate bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdx --json", 2)
   end
 end
