@@ -15,5 +15,5 @@ btc-toolkit block 0
 ```
 
 The formula installs the same source file that is published on
-[PyPI](https://pypi.org/project/btc-toolkit/), pinned by its SHA-256, plus the
-bash and zsh completions from the matching release tag.
+[PyPI](https://pypi.org/project/btc-toolkit/), pinned by its SHA-256, and the
+bash, zsh and fish completions that ship inside it.
