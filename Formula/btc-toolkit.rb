@@ -3,8 +3,8 @@ class BtcToolkit < Formula
 
   desc "Bitcoin CLI: read OP_RETURN, decode and verify transactions, validate addresses"
   homepage "https://github.com/devdavidejesus/btc-toolkit"
-  url "https://files.pythonhosted.org/packages/34/35/e62298100d2b98a3680aefef86a783772566d5b45dac04056140d99023b4/btc_toolkit-1.8.2.tar.gz"
-  sha256 "8ebdf7b026bc2a3b0ec31ce9073656b5b66021a7d2391dbbc4b4b88780ec1111"
+  url "https://files.pythonhosted.org/packages/ae/c1/b5e7e39ca0f0ca6d6b8b468020d47b55c717ec838752dee42f99d1d6ff9c/btc_toolkit-1.8.3.tar.gz"
+  sha256 "d450df2cbf7f578009d232974147678d73abbb06cf5f1516c6a98c18b65b81dd"
   license "MIT"
 
   depends_on "python@3.15"
